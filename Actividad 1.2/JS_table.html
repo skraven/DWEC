@@ -1,0 +1,520 @@
+﻿<html>
+<body>
+    <table border="1">
+        <tr bgcolor="#0099CC" align="center" bordercolor="#FFFFFF">
+          <td>Concepto</td>
+          <td>Codigo Fuente</td>
+          <td>Resultado</td>
+        </tr>
+        <tr>
+          <td>Variable</td>
+          <td>
+            &lt;!DOCTYPE html&gt; </br>
+        &lt;html&gt;</br>
+        &lt;body&gt;</br>
+        
+        &lt;script&gt;</br>
+        var x=5;</br>
+        var y=6;</br>
+        var z=x+y;</br>
+        
+        document.write(x + "&lt;br&gt;");</br>
+        document.write(y + "&lt;br&gt;");</br>
+        document.write(z + "&lt;br&gt;");</br>
+        &lt;/script&gt;</br>
+        
+        </body>
+        </html>
+        
+        </td>
+          <td><!DOCTYPE html>
+        <html>
+        <body>
+        
+        <script>
+        var x=5;
+        var y=6;
+        var z=x+y;
+        
+        document.write(x + "<br>");
+        document.write(y + "<br>");
+        document.write(z + "<br>");
+        </script></td>
+        </tr>
+        <tr>
+          <td>JS Data Types</td>
+          <td>&lt;!DOCTYPE html&gt;</br>
+&lt;html&gt;</br>
+&lt;body&gt;</br>
+
+&lt;script&gt;</br>
+//no numerico</br>
+var noNumerico = 'a'*1;</br>
+//indefinidas</br>
+var var1, var2, var3;</br> 
+//Null</br>
+var valorNulo = null;</br> 
+//Objeto</br>
+var obj = new Image();</br> 
+//Booleanos</br>
+var valor = true;</br> 
+//Cadena</br>
+var cadena = "Hola\\namigo";</br>
+//numero </br>
+var numero = 33;</br> 
+
+document.write(noNumerico + "&lt;br&gt;")</br>
+document.write(valorNulo + "&lt;br&gt;")</br>
+document.write(obj + "&lt;br&gt;")</br>
+document.write(valor + "&lt;br&gt;")</br>
+document.write(numero + "&lt;br&gt;")</br>
+&lt;/script&gt;</br>
+
+&lt;/body&gt;</br>
+&lt;/html&gt;</td>
+          <td><!DOCTYPE html>
+<html>
+<body>
+
+<script>
+//no numerico
+var noNumerico = 'a'*1;
+//indefinidas
+var var1, var2, var3; 
+//Null
+var valorNulo = null; 
+//Objeto
+var obj = new Image(); 
+//Booleanos
+var valor = true; 
+//Cadena
+var cadena = "Hola\namigo";
+//numero 
+var numero = 33; 
+
+document.write(noNumerico + "<br>")
+document.write(valorNulo + "<br>")
+document.write(obj + "<br>")
+document.write(valor + "<br>")
+document.write(numero + "<br>")
+</script>
+
+</body>
+</html></td>
+        </tr>
+       <tr>
+          <td>JS Objects</td>
+          <td>&lt;!DOCTYPE html&gt;</br>
+&lt;html&gt;</br>
+&lt;body&gt;</br>
+
+&lt;script&gt;</br>
+var grupo=new Object();</br>
+grupo.nombre="Nirvana";</br>
+grupo.estilo="Grunge";</br>
+grupo.cantante="Kurt Cobain";</br>
+grupo.pais="USA"; </br>
+grupo.cancion="About a girl"</br>
+var ciudades=new Array("Barcelona","Hamburgo","Seattle","Roma","Berlin","Gotemburg");</br>
+var rand = ciudades[Math.floor(Math.random() * ciudades.length)];</br>
+document.write( grupo.cantante+ " del grupo "+ grupo.nombre+ " esta tocando" + grupo.cancion + " en "+ rand );</br>
+&lt;/script&gt; </br>
+
+&lt;/body&gt;</br>
+&lt;/html&gt;</br></td>
+          <td><!DOCTYPE html>
+<html>
+<body>
+
+<script>
+var grupo=new Object();
+grupo.nombre="Nirvana";
+grupo.estilo="Grunge";
+grupo.cantante="Kurt Cobain";
+grupo.pais="USA"; 
+grupo.cancion="About a girl"
+var ciudades=new Array("Barcelona","Hamburgo","Seattle","Roma","Berlin","Gotemburg");
+var rand = ciudades[Math.floor(Math.random() * ciudades.length)];
+document.write( grupo.cantante+ " del grupo "+ grupo.nombre+ " esta tocando" + 
+grupo.cancion + " en "+ rand );
+</script>
+
+</body>
+</html></td>
+        </tr> 
+        <tr>
+          <td>JS Functions</td>
+          <td>&lt;!DOCTYPE html&gt;</br>
+&lt;html&gt;</br>
+&lt;body&gt;</br>
+
+&lt;button onclick="fibonacci(12)"&gt;Fibonacci&lt;/button&gt;</br>
+&lt;script&gt;</br>
+function fibonacci(numero)</br>
+        {</br>
+            var var1 = 0;</br>
+            var var2 = 1;</br>
+            var var3;</br>
+
+            document.write(var1+" ");</br>
+            document.write(var2+" ");</br>
+
+            for(var i=3; i &lt;= numero;i++)</br>
+            {</br>
+                var3 = var1 + var2;</br>
+                var1 = var2;</br>
+                var2 = var3;</br>
+                document.write(var3+" ");</br>
+            }</br>
+        }</br>
+&lt;/script&gt;</br>
+
+&lt;/body&gt;</br>
+&lt;/html&gt;</td></br>
+          <td><!DOCTYPE html>
+<html>
+<body>
+DARLE A RECARGAR LA PAGINA PARA
+VOLVER A LA TABLA UNA VEZ APRETADO EL BOTON.
+<button onClick="fibonacci(12)">Fibonacci</button>
+<script>
+function fibonacci(numero)
+        {
+            var var1 = 0;
+            var var2 = 1;
+            var var3;
+
+            document.write(var1+" ");
+            document.write(var2+" ");
+
+            for(var i=3; i <= numero;i++)
+            {
+                var3 = var1 + var2;
+                var1 = var2;
+                var2 = var3;
+                document.write(var3+" ");
+            }
+        }
+</script>
+
+</body>
+</html></td>
+        </tr> 
+        <tr>
+          <td>JS Operators</td>
+          <td>&lt;!DOCTYPE html&gt;</br>
+&lt;html&gt;</br>
+&lt;body&gt;</br>
+
+&lt;script type="text/javascript"&gt;</br>
+ 
+document.write("Operaciones Matematicas con los numeros 5 y 2 :" + "&lt;br /&gt;");</br>
+var num1 = 5;</br>
+var num2 = 2;</br>
+ 
+var suma = num1 + num2;</br>
+document.write(" Suma :"+ suma  + "&lt;br /&gt;");</br>
+ 
+var resta = num1 - num2;</br>
+document.write("Resta: " +resta  + "&lt;br /&gt;");</br>
+ 
+var multiplicacion = num1 * num2;</br>
+document.write("Multiplicacion:"+ multiplicacion  + "&lt;br /&gt;");</br>
+ 
+var division = num1 / num2;</br>
+document.write("Division : " + division  + "&lt;br /&gt;" );</br>
+ 
+var modulo = num1 % num2;</br>
+document.write("Modulo :" + modulo);</br>
+ 
+&lt;/script&gt;</br>
+
+&lt;/body&gt;</br>
+&lt;/html&gt;</td>
+          <td><!DOCTYPE html>
+<html>
+<body>
+
+<script type="text/javascript">
+ 
+document.write("Operaciones Matematicas con los numeros 5 y 2 :" + "<br />");
+var num1 = 5;
+var num2 = 2;
+ 
+var suma = num1 + num2;
+document.write(" Suma :"+ suma  + "<br />");
+ 
+var resta = num1 - num2;
+document.write("Resta: " +resta  + "<br />");
+ 
+var multiplicacion = num1 * num2;
+document.write("Multiplicacion:"+ multiplicacion  + "<br />");
+ 
+var division = num1 / num2;
+document.write("Division : " + division  + "<br />" );
+ 
+var modulo = num1 % num2;
+document.write("Modulo :" + modulo);
+ 
+</script>
+
+</body>
+</html></td>
+        </tr> 
+        <tr>
+          <td>JS Comparisons</td>
+          <td>&lt;script type="text/javascript"&gt;<br />
+var valores = [true, 5, false, "hola", "adios", 2];<br />
+ 
+// Cual de los 2 elementos de texto es mayor<br />
+// Si el resultado es true, el primer texto es mayor<br />
+var resultado = valores[3] &gt; valores[4];<br />
+document.write(" El primer texto es mayor?:" + resultado  + "&lt;br /&gt;");<br />
+ 
+//Meter valores booleanos en el array para comparar<br />
+var valor1 = valores[0];<br />
+var valor2 = valores[2];<br />
+ 
+document.write(" Obtener TRUE  &lt;br /&gt;");<br />
+var resultado = valor1 || valor2;<br />
+document.write(resultado  + "&lt;br /&gt;");<br />
+ 
+document.write(" Obtener False"  + "&lt;br /&gt;");<br />
+resultado = valor1 && valor2;<br />
+document.write(resultado  + "&lt;br /&gt;");<br />
+&lt;/script&gt;</td>
+          <td><script type="text/javascript">
+var valores = [true, 5, false, "hola", "adios", 2];
+ 
+// Cual de los 2 elementos de texto es mayor
+// Si el resultado es true, el primer texto es mayor
+var resultado = valores[3] > valores[4];
+document.write(" El primer texto es mayor?:" + resultado  + "<br />");
+ 
+//Meter valores booleanos en el array para comparar
+var valor1 = valores[0];
+var valor2 = valores[2];
+ 
+document.write(" Obtener TRUE  <br />");
+var resultado = valor1 || valor2;
+document.write(resultado  + "<br />");
+ 
+document.write(" Obtener False"  + "<br />");
+resultado = valor1 && valor2;
+document.write(resultado  + "<br />");
+</script></td>
+        </tr> 
+        <tr>
+          <td>JS Conditions</td>
+          <td>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+&lt;button onClick="dni()"&gt;DNI&lt;/button&gt;<br />
+&lt;body&gt;<br />
+&lt;script&gt;<br />
+function dni () { <br />
+var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];<br />
+ 
+var numero = prompt("Introduce tu número de DNI (sin la letra)");<br />
+var letra = prompt("Introduce la letra de tu DNI (en mayúsculas)");<br />
+letra = letra.toUpperCase();<br />
+ 
+if(numero &lt; 0 || numero &gt; 99999999) {<br />
+  alert("El número proporcionado no es válido");<br />
+}<br />
+else {<br />
+  var letraCalculada = letras[numero % 23];<br />
+  if(letraCalculada != letra) {<br />
+    alert("La letra o el númerono son correctos");<br />
+  }<br />
+  else {<br />
+    alert("El número de DNI y LA letra son correctos");<br />
+  }<br />
+}<br />
+}<br />
+&lt;/script&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;</td>
+          <td><!DOCTYPE html>
+<html>
+<button onClick="dni()">DNI</button>
+<body>
+<script>
+function dni()
+	{
+		var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+		 
+		var numero = prompt("Introduce tu número de DNI (sin la letra)");
+		var letra = prompt("Introduce la letra de tu DNI (en mayúsculas)");
+		letra = letra.toUpperCase();
+		 
+		if(numero < 0 || numero > 99999999) {
+		  alert("El número proporcionado no es válido");
+		}
+		else {
+		  var letraCalculada = letras[numero % 23];
+		  if(letraCalculada != letra) {
+			alert("La letra o el númerono son correctos");
+		  }
+		  else {
+			alert("El número de DNI y LA letra son correctos");
+		  }
+		}
+	}
+</script>
+</body>
+</html></td>
+        </tr> 
+        <tr>
+          <td>JS Switch</td>
+          <td>&lt;!DOCTYPE html&gt;<br />
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;script&gt;<br />
+diaSemana=new Date();<br />
+fecha=diaSemana.getDay()<br />
+switch (fecha){<br />
+case 1:<br />
+document.write("Es Lunes")<br />
+break<br />
+case 2:<br />
+document.write("Es Martes")<br />
+break<br />
+case 3:<br />
+document.write("Es Miércoles")<br />
+break<br />
+case 4:<br />
+document.write("Es Jueves")<br />
+break<br />
+case 5:<br />
+document.write("Es viernes")<br />
+break<br />
+case 6:<br />
+case 7:<br />
+document.write("Es fin de semana")<br />
+break<br />
+default:<br />
+document.write("Ese día no existe")<br />
+}<br />
+&lt;/script&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+
+&lt;/body&gt;<br />
+&lt;/html&gt; </td>
+          <td><!DOCTYPE html>
+<html>
+<head>
+<script>
+diaSemana=new Date();
+fecha=diaSemana.getDay()
+switch (fecha){
+case 1:
+document.write("Es Lunes")
+break
+case 2:
+document.write("Es Martes")
+break
+case 3:
+document.write("Es Miércoles")
+break
+case 4:
+document.write("Es Jueves")
+break
+case 5:
+document.write("Es viernes")
+break
+case 6:
+case 7:
+document.write("Es fin de semana")
+break
+default:
+document.write("Ese día no existe")
+}
+</script>
+</head>
+<body>
+
+</body>
+</html> </td>
+        </tr> 
+        <tr>
+          <td>JS Loop For</td>
+          <td>&lt;!DOCTYPE html&gt;</br>
+&lt;html&gt;</br>
+&lt;body&gt;</br>
+
+&lt;script&gt;</br>
+var i;</br>
+var asignaturas = new Array();</br>
+asignaturas[0] = "DWEC";</br>
+asignaturas[1] = "DIW";</br>
+asignaturas[3] = "SERVIDOR";</br>
+asignaturas[4] = "POO";</br>
+asignaturas[5] = "PROYECTO";</br>
+
+for (i=0;i&lt;asignaturas.length;i++)</br>
+{</br>
+document.write(asignaturas[i] + "&lt;br&gt;");</br>
+}</br>
+&lt;/script&gt;</br>
+
+&lt;/body&gt;</br>
+&lt;/html&gt;</td>
+          <td><!DOCTYPE html>
+<html>
+<body>
+
+<script>
+var i;
+var asignaturas = new Array();
+asignaturas[0] = "DWEC";
+asignaturas[1] = "DIW";
+asignaturas[3] = "SERVIDOR";
+asignaturas[4] = "POO";
+asignaturas[5] = "PROYECTO";
+
+for (i=0;i<asignaturas.length;i++)
+{
+	document.write(asignaturas[i] + "<br>");
+}
+</script>
+
+</body>
+</html></td>
+        </tr>  
+      <tr>
+          <td>JS Loop While</td>
+          <td>&lt;!DOCTYPE html&gt;</br>
+&lt;html&gt;</br>
+&lt;head&gt;</br>
+&lt;script&gt;</br>
+var suma = 0 </br>
+while (suma &lt; 1000){</br> 
+   	suma += parseInt(Math.random() * 100)</br> 
+   	document.write (suma + "&lt;br&gt;") </br>
+} </br>
+&lt;/script&gt;</br>
+&lt;/head&gt;</br>
+&lt;body&gt;</br>
+
+&lt;/body&gt;</br>
+&lt;/html&gt; </td>
+          <td><!DOCTYPE html>
+<html>
+<head>
+<script>
+var suma = 0 
+while (suma < 1000){ 
+   	suma += parseInt(Math.random() * 100) 
+   	document.write (suma + "<br>") 
+} 
+</script>
+</head>
+<body>
+
+</body>
+</html> </td>
+        </tr>  
+    </table>
+</body>
+</html>
