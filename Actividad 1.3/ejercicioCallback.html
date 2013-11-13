@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Programa Callback</p>
+
+<button onClick="principalclasic()">Clasica Programa</button>
+<button onClick="ambcallback()">Callback Programa</button>
+<button onClick="secun2()">Asincrona Programa</button>
+
+<script>
+
+
+
+//CLASICA
+
+function principalclasic()
+{
+	alert("Inicio funcion principal");
+	console.log('Empieza la funcion 1');
+	secundariaclasic ();
+	alert("Fin Funcion principal");
+	console.log('Acaba la funcion 1');
+}
+
+function secundariaclasic()
+{
+	console.log('Empieza la funcion 2');
+	alert("Inicio Funcion Secundaria");
+	alert("Fin Funcion Secundaria");
+	console.log('Acaba la funcion 2');
+}
+
+
+
+
+
+
+//CALLBACK
+
+
+
+function funcion1(funcion2concallback, funcion3concallback) {
+            alert("Estas en el inicio de la función uno");
+            console.log('La función 1 se acaba de iniciar');
+            x = Math.floor((Math.random() * 2));
+            if (x == 1) {
+                funcion2concallback(funcion2);
+            }
+            else {
+                funcion3concallback(funcion3);
+            }
+            console.log('La función 1 acaba de terminar');
+        }
+        function funcion2concallback() {
+			console.log('La función 2 se acaba de iniciar');
+            alert("Estas en el inicio de la función dos CON CALLBACK");
+        }
+        function funcion3concallback() {
+            console.log('La función 3 se acaba de iniciar');
+			alert("Estas en el inicio de la función tres CON CALLBACK");
+            console.log('La función 3 acaba de terminar');
+        }
+        function ambcallback(funcion2,funcion3) {
+            funcion1(funcion2concallback, funcion3concallback);
+            funcion1(funcion3concallback, funcion2concallback);
+        }
+
+function funcion2(){
+	alert("Funcion 2");
+}
+
+function funcion3(){
+	alert("Funcion 3");
+}
+//ASINCRONA
+
+function principalasincrona()
+{
+//alert("Inicio funcion principal");
+	console.log('Empieza la funcion 1');
+	alert("Fin Funcion principal");
+	secun2();
+	console.log('Acaba la funcion 1');
+}
+function secun2(){
+		console.log('Inicio funcion 2');
+	alert("Estas en el inicio de la función 2 ");
+	var timeoutId = setTimeout(function(){
+	  secun3();
+	},5000);
+		console.log('Acaba la funcion 2');
+}
+
+function secun3()
+{
+		console.log('Se inicia la funcion 3');
+	alert("FUNCION 3");
+		console.log('Acaba la funcion 3');
+}
+
+function asin()
+{
+}
+
+</script>
+
+<h1><strong>Conclusiones</strong></h1>
+<p>
+  Las funciones se han comportado como se espeaba. La principal ventaja que le veo es en el caso del CALLBACK realizar llamadas a funciones dentro de funciones mientras que en el timeOut le veo un uso importante a la hora de realizar funciones paralelalemte o a la hora de mostrar errores por pantalla si se pasa un cierto tiempo de respuesta ( por ejemplo por una caida de servidor )
+</p>
+
+</body>
+</html>

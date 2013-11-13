@@ -1,0 +1,158 @@
+<html>
+<head>
+
+<style type="text/css">
+
+fieldset {
+        border-width: 1px;
+        border-style: solid;
+        border-color: black;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+	}
+
+* html .floatFix {	
+	height:1%; 
+	}
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+    #tablanotas tr td {
+        width: 150px;  
+        border-width: 1px;
+        border-style: solid;
+        border-color: black;  
+    }
+</style>
+<script>
+/* Dani García Sastre */
+var arraynota = new Array();
+
+function validar()
+{
+	
+	var date = new Date();
+	var name = new String(nombre.value);
+	name=name.toUpperCase();
+	var boolean= false;
+
+
+	nonumber = parseFloat(nota.value);
+	arraynota.splice(0,0,nonumber);
+
+
+
+
+
+	var note= new Array();
+	note[0] = name;
+	note[1] = nota.value;
+	note[2] = date.toUTCString();
+	media();
+		if ( nota.value > 5 )
+		{
+		boolean= true;
+		}
+
+	note[3] = boolean;
+	var tablarellenar = document.getElementById("tablanotas");
+	var fila = document.createElement("tr");
+	var columna1 = document.createElement("td");
+	var tCol = document.createTextNode(note[0]);
+	columna1.appendChild(tCol);
+	fila.appendChild(columna1);
+	var columna2 = document.createElement("td"); 
+	tCol = document.createTextNode(note[1]);
+	columna2.appendChild(tCol);
+	fila.appendChild(columna2);
+	var columna3 = document.createElement("td"); 
+	tCol = document.createTextNode(note[2]);
+	columna3.appendChild(tCol);
+	fila.appendChild(columna3);
+	var columna4 = document.createElement("td"); 
+	tCol = document.createTextNode(note[3]);
+	columna4.appendChild(tCol);
+	fila.appendChild(columna4);
+	tablarellenar.appendChild(fila);
+}
+
+function media(){
+ 	aux=auxiliar= 0;
+        for (var contador = 0; contador < arraynota.length ; contador++) {
+        	aux = parseInt(arraynota[contador]);
+        	auxiliar = auxiliar + aux;
+	};
+      	mediafinal = (auxiliar / contador);
+	mediafinal = Math.round(mediafinal);
+	auxiliar=0;
+	aux=0;
+	child = document.getElementById('tdnota');
+	child.innerHTML = mediafinal;   
+	          
+}
+
+
+function borrar(){
+                nombre.value="";
+                nota.value="";
+		i=0;
+		child = document.getElementById('tdnota');
+                child.innerHTML = 0;
+	/*	for ( var pepe=0;pepe<arraynota.lenght;pepe++){
+		arraynota[pepe]=0;
+		} */
+		arraynota.length=0;
+
+                filas = document.getElementById('tablanotas').getElementsByTagName("tr").length;
+                while( filas > 1 ){
+                    document.getElementById("tablanotas").deleteRow(1);
+                };
+
+            }
+
+</script>
+
+
+</head>
+
+<body>
+
+<div class="floatFix">
+	<fieldset id="alumnos">
+    	<legend>Alumno</legend>
+        <table cellpadding="3" cellspacing="0" border="0">
+       		<tr>
+		<td>Nombre:</td>
+		<td><input type="text" id="nombre" /></td>
+		</tr>
+
+        	<tr>
+		<td>Nota:</td>
+		<td><input type="text" id="nota" /></td>
+		</tr>
+        	<tr>
+		<td>&nbsp;</td>
+		<td><button onclick="validar()">Validar</button>&nbsp;
+             	<button onclick="borrar()">Borrar</button>&nbsp;
+        </table>
+
+	<table>
+		<tr><td>NOTA MEDIA</td>
+
+		<td id="tdnota">0</td></tr>
+	</table>
+
+    </fieldset>
+<table id="tablanotas">
+                <td>Nombre</td>
+		<td>Nota</td>
+		<td>Fecha</td>	
+		<td>Aprobado</td>
+</table>
+	
+</div>
+</body>
+</html> 
