@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var db;
+
+function indexedDBOk() {
+	return "indexedDB" in window;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+
+	//Si soporta indexedDb abrira la base de datos
+	if(!indexedDBOk) return;
+
+	var openRequest = indexedDB.open("databasecarrera",1);
+
+	openRequest.onupgradeneeded = function(e) {
+		var thisDB = e.target.result;
+
+		if(!thisDB.objectStoreNames.contains("chocometros")) {
+			thisDB.createObjectStore("chocometros", {autoIncrement:true});
+		}
+	}
+
+	openRequest.onsuccess = function(e) {
+		db = e.target.result;
+
+		//llamada para poner datos
+		document.querySelector("#addButton").addEventListener("click", addPasos, false);
+
+		//llamada para recoger id's
+		document.querySelector("#getButton").addEventListener("click", getMetros, false);
+
+		//llamada para recoger todo
+		document.querySelector("#getAllButton").addEventListener("click", mostrarDatos, false);
+
+	}	
+
+	openRequest.onerror = function(e) {
+		//hacer algo como error
+	}
+
+
+},false);
+
+
+function addPasos(e) {
+	//var name = document.querySelector("#name").value;
+	//var email = document.querySelector("#email").value;
+
+	//console.log("About to add "+posicion1+"/"+posicion2);
+
+	//Get a transaction
+	//default for OS list is all, default for type is read
+	var transaction = db.transaction(["chocometros"],"readwrite");
+	//pregunta por objectStore
+	var store = transaction.objectStore("chocometros");
+
+	//Define metros
+		var posiciones = {
+		posicion1:le,
+		posicion2:le3,
+		posicion3:le4,
+		posicion4:le2,
+		posicion5:le5,
+		posicion6:le6,
+		created:new Date()
+	}
+
+	//Perform the add
+	var request = store.add(posiciones);
+
+	request.onerror = function(e) {
+		console.log("Error",e.target.error.name);
+		//Recoge Algun tipo de error
+	}
+
+	request.onsuccess = function(e) {
+		console.log("DB Creada");
+	}
+}
+
+function getMetros(e) {
+	var key = document.querySelector("#key").value;
+	if(key === "" || isNaN(key)) return;
+
+	var transaction = db.transaction(["chocometros"],"readonly");
+	var store = transaction.objectStore("chocometros");
+
+	var request = store.get(Number(key));
+
+	request.onsuccess = function(e) {
+
+		var result = e.target.result;
+		console.dir(result);
+		if(result) {
+			var array1= new Array ();
+			var i=0;
+			for (var field in result){
+				array1[i]= result[field];
+				i++;
+			}
+
+			le=array1[0];
+			le3=array1[1];
+			le4=array1[2];
+			le2=array1[3];
+			le5=array1[4];
+			le6=array1[5];
+//Mueve los monigotes a la posición deseada en la DB
+		$("#jefe1").animate({"left": le},"fast");
+		$("#gregario11").animate({"left":le3},"fast");
+		$("#gregario12").animate({"left":le4},"fast");
+		$("#jefe2").animate({"left":le2},"fast");
+		$("#gregario21").animate({"left":le5},"fast");
+		$("#gregario22").animate({"left":le6},"fast");
+
+		} else {
+			document.querySelector("#status").innerHTML = "<h2>No existe esa partida!</h2>";
+		}	
+	}	
+
+
+}
+
+function mostrarDatos(e) { // Muestra todas las partidas
+
+	var s = "";
+	
+	db.transaction(["chocometros"], "readonly").objectStore("chocometros").openCursor().onsuccess = function(e) {
+		var cursor = e.target.result;
+		if(cursor) {
+			s += "<h2>Partida "+cursor.key+"</h2><p>";
+			for(var field in cursor.value) {
+				s+= field+"="+cursor.value[field]+"<br/>";
+			}
+			s+="</p>";
+			cursor.continue();
+
+		}
+		document.querySelector("#status2").innerHTML = s;
+	}
+}
+
+</script>
+<STYLE>
+#jefe1, #gregario11 ,#gregario12,#jefe2, #gregario21 ,#gregario22{
+    position:relative;
+   top:10px;
+    left:0px;
+}
+
+
+#corredores{
+	background-image: url('1.png');
+	width: 1200px;
+	margin: 0 auto;
+-webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border: 2px solid black;
+border-radius: 20px ;
+	
+}
+#botonsiguiente{
+	text-align: center;
+	margin: 0 auto;
+
+}
+#log1o{
+	text-align: center;
+	margin: 0 auto;
+
+}
+</STYLE>
+<script type="text/javascript" src="jquery-latest.js"></script>
+	<script type="text/javascript">
+	var x;
+	function random(){
+	x=Math.floor((Math.random()*200)+1);
+	}
+function pausar(){
+document.getElementById('sound1').pause();
+sound1.currentTime = 0;
+}
+
+function musica(){ // Cuando ganas salta esta funcion
+		document.getElementById('sound3').pause();
+		document.getElementById('sound1').play();
+	var timeoutId = setTimeout(function(){
+	  pausar();
+	  if (sound3.currentTime !== 0){
+	  document.getElementById('sound3').play();}
+	},2600);
+	
+		
+}
+
+function musicaon(){ //Funcion para musica de fondo
+		document.getElementById('sound3').play();	
+		sound3.loop=true;
+		sound3.autoplay=true;
+}
+
+function musicaoff(){ // Musica de fondo apagada
+
+	document.getElementById('sound3').pause();
+sound3.currentTime = 0;
+}
+function dopar(){ // Funcion para dopar los pajaritos
+document.getElementById('sound2').play();
+
+}
+function reset(){ //funcion para que los pajaritos vuelvan a su sitio
+	$("#jefe1").animate({"left":"0"},"fast");
+	$("#gregario11").animate({"left":"0"},"fast");
+	$("#gregario12").animate({"left":"0"},"fast");
+	$("#jefe2").animate({"left":"0"},"fast");
+	$("#gregario21").animate({"left":"0"},"fast");
+	$("#gregario22").animate({"left":"0"},"fast");
+	pausar();
+
+}
+
+	</script>
+</head>
+<body style="background: url(fondo1.jpg) no-repeat center bottom fixed; width: 100%; background-size: cover;">
+
+
+<!-- BASE DE DATOS-->
+<div style="border: solid 15px black;">
+<button id="addButton">Guardar partida</button>
+<p/>
+<input type="number" id="key" placeholder="ID"><br/>
+<button id="getButton">Cargar Partida por ID</button>
+<p/>
+
+<div id="status"></div>
+<button id="getAllButton">Cargar TODAS las partidas</button>
+<p/>
+<div id="status2"></div> </div>
+<!-- FIN BASE DE DATOS-->
+
+<div id="botonsiguiente"><input type="button" id="right" value="Siguiente Paso"/><button  onclick="musicaon()">musicaon</button><button  onclick="musicaoff()">MusicaOff</button></div>
+<div id="corredores">
+	<img id="jefe1" src="img\jefe1.png" alt="Jefe1" width="90" height="97"> 
+	<canvas height="10px" width="1100px" id="micanvas11" position="relative"></canvas>
+</div>
+<button style="	left:500px; position:relative;" onclick="dopar()">Dopar con verduras Gyshal</button>
+</br>
+<div id="corredores">
+	<img id="gregario11" src="img\gregario11.png" alt="Gregario11" width="90" height="97">
+	<canvas height="10px" width="1100px" id="micanvas12"></canvas>
+</div>
+<button style="	left:500px; position:relative;" onclick="dopar()">Dopar con verduras Gyshal</button>
+</br>
+<div id="corredores">
+	<img id="gregario12" src="img\gregario12.png" alt="Gregario12" width="90" height="97">
+	<canvas height="10px" width="1100px" id="micanvas13"></canvas>
+</div>
+<button style="	left:500px; position:relative;" onclick="dopar()">Dopar con verduras Gyshal</button>
+</br>
+<div id="corredores">
+	<img id="jefe2" src="img\jefe2.png" alt="Jefe2" width="90" height="97">
+	<canvas height="10px" width="1100px" id="micanvas21"></canvas>
+</div>
+<button style="	left:500px; position:relative;" onclick="dopar()">Dopar con verduras Gyshal</button>
+</br>
+<div id="corredores">
+	<img id="gregario21" src="img\gregario21.png" alt="Gregario21" width="90" height="97">
+	<canvas height="10px" width="1100px" id="micanvas22"></canvas>
+</div>
+<button style="	left:500px; position:relative;" onclick="dopar()">Dopar con verduras Gyshal</button>
+</br>
+<div id="corredores">
+	<img id="gregario22" src="img\gregario22.png" alt="Gregario22" width="90" height="97">
+	<canvas height="10px" width="1100px" id="micanvas23"></canvas>
+</div>
+<button style="	left:500px; position:relative;" onclick="dopar()">Dopar con verduras Gyshal</button>
+</br>
+
+<br/><br/>
+
+
+
+<audio id="sound1" src="fanfare.mp3" preload="auto"></audio>
+<audio id="sound2" src="chocobo.mp3" preload="auto"></audio>
+<audio id="sound3" src="fondo.mp3" preload="auto"></audio>
+
+<script type="text/javascript">
+		var le;
+		var le2;
+		var le3;
+		var le4;
+		var le5;
+		var le6;
+	$("#right").click(function(){
+		random();
+		$("#jefe1").animate({"left":"+=" + x +"px"},"slow");
+		random();
+		$("#gregario11").animate({"left":"+=" + x +"px"},"slow");
+		random();
+		$("#gregario12").animate({"left":"+=" + x +"px"},"slow");
+		random();
+		$("#jefe2").animate({"left":"+=" + x +"px"},"slow");
+		random();
+		$("#gregario21").animate({"left":"+=" + x +"px"},"slow");
+		random();
+		$("#gregario22").animate({"left":"+=" + x +"px"},"slow");
+
+
+		le = $("#jefe1").css("left").replace("px","");
+		le2 = $("#jefe2").css("left").replace("px","");
+		le3 = $("#gregario11").css("left").replace("px","");
+		le4 = $("#gregario12").css("left").replace("px","");
+		le5 = $("#gregario21").css("left").replace("px","");
+		le6 = $("#gregario22").css("left").replace("px","");
+
+		if (le2>=1000){
+			musica();
+			alert("GANADOR  JEFE 2");		
+			reset();
+			}else
+				if (le>=1000){
+			musica();
+			alert("GANADOR JEFE 1");
+			reset();
+			}else
+				if (le3>=1000){
+			musica();
+			alert("GANADOR Gregario 1 equipo 1");
+			reset();
+		}else
+				if (le4>=1000){
+			musica();
+			alert("GANADOR Gregario 2 equipo 1");	
+			reset();
+	}else
+				if (le5>=1000){
+			musica();
+			alert("GANADOR Gregario 1 equipo 2");
+			reset();
+	}else
+				if (le6>=1000){
+			musica();
+			alert("GANADOR Gregario 2 equipo 2");
+			reset();
+
+		}
+
+	});
+
+</script>
+
+
+<script>
+
+	var canvas = document.getElementById("micanvas11");
+	var ctx = canvas.getContext("2d");
+
+	ctx.moveTo(50000,10);
+	ctx.lineTo(10,10);
+	ctx.lineWidth = 17;
+	ctx.strokeStyle="#3006cb";
+	ctx.stroke();
+
+	var canvas = document.getElementById("micanvas12");
+	var ctx = canvas.getContext("2d");
+
+	ctx.moveTo(50000,10);
+	ctx.lineTo(10,10);
+	ctx.lineWidth = 17;
+	ctx.strokeStyle="#3006cb";
+	ctx.stroke();
+
+	var canvas = document.getElementById("micanvas13");
+	var ctx = canvas.getContext("2d");
+
+	ctx.moveTo(50000,10);
+	ctx.lineTo(10,10);
+	ctx.lineWidth = 17;
+	ctx.strokeStyle="#3006cb";
+	ctx.stroke();
+
+	var canvas = document.getElementById("micanvas21");
+	var ctx = canvas.getContext("2d");
+
+	ctx.moveTo(50000,10);
+	ctx.lineTo(10,10);
+	ctx.lineWidth = 17;
+	ctx.strokeStyle="#ed1226";
+	ctx.stroke();
+
+	var canvas = document.getElementById("micanvas22");
+	var ctx = canvas.getContext("2d");
+
+	ctx.moveTo(50000,10);
+	ctx.lineTo(10,10);
+	ctx.lineWidth = 17;
+	ctx.strokeStyle="#ed1226";
+	ctx.stroke();
+
+	var canvas = document.getElementById("micanvas23");
+	var ctx = canvas.getContext("2d");
+
+	ctx.moveTo(50000,10);
+	ctx.lineTo(10,10);
+	ctx.lineWidth = 17;
+	ctx.strokeStyle="#ed1226";
+	ctx.stroke();
+
+</script>
+
+</body>
+</html>
