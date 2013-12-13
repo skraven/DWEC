@@ -1,0 +1,252 @@
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #container{
+        border: 12px solid black;
+        width: 978px;
+        height:600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        background-image: url('img/fondo1.jpg');
+        background-size: cover;
+
+      }
+
+      canvas{ background-color: blue;}
+    </style>
+  </head>
+  <body style="background: url(img/Xmaspattern.png) ">
+    <div id="container"></div>
+    <script src="kinetic/kinetic-v4.7.4.min.js"></script>
+    <script defer="defer">
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        background:'blue',
+        width: 978,
+        height: 600
+      });
+      var layer = new Kinetic.Layer();
+
+
+
+
+
+var star = new Kinetic.Star({
+        x: 830,
+        y: 235,
+        numPoints: 5,
+        innerRadius: 20,
+        outerRadius: 35,
+        fill: 'yellow',
+        stroke: 'black',
+        strokeWidth: 1
+      });
+
+      // add the shape to the layer
+      
+
+      stage.add(layer);
+
+      var period = 4000;
+
+      var anim = new Kinetic.Animation(function(frame) {
+        var scale = Math.sin(frame.time * 2 * Math.PI / 10000) + 2;
+        star.setScale(scale *0.4);
+
+        
+      }, layer);
+
+      anim.start();
+
+var arbolito = new Image();
+      arbolito.onload = function() {
+        var arbolna = new Kinetic.Image({
+          x: 700,
+          y: 200,
+          image: arbolito,
+          width: 260,
+          height: 300
+        });
+
+        layer.add(arbolna);
+        layer.add(star);
+        };
+      arbolito.src = 'img/arbol2.png';
+
+var jack = new Image();
+      jack.onload = function() {
+        var jackim = new Kinetic.Image({
+          x: 200,
+          y: 280,
+          image: jack,
+          width: 132,
+          height: 210
+        });
+
+        // add the shape to the layer
+        layer.add(jackim);
+
+
+     var animjack = new Kinetic.Animation(function(frame) { 
+     
+        jackim.on('mouseover', function() {
+          musica2();
+        });
+        jackim.on('mouseout', function() {
+          pausajack();
+        });
+
+
+      }, layer);
+
+ 
+      animjack.start();
+
+      };
+      jack.src = 'img/jack.png';
+
+
+var imageObj = new Image();
+      imageObj.onload = function() {
+        var santa = new Kinetic.Image({
+          x: 200,
+          y: 50,
+          image: imageObj,
+          width: 386,
+          height: 158
+        });
+
+        // add the shape to the layer
+        layer.add(santa);
+
+        // add the layer to the stage
+        stage.add(layer);
+
+      var amplitudeX = 380;
+      var amplitudeY = 50;
+      // in ms
+
+     var anim_santa = new Kinetic.Animation(function(frame) { // y= A· sin wt ; T=2·PI·w
+      santa.setY(amplitudeY * Math.sin(frame.time * 4 * Math.PI / 7000) + 50);
+      santa.setX(amplitudeX * Math.sin(frame.time * Math.PI / 7000) + 350);
+      
+
+        santa.on('mouseover', function() {
+          musica();
+        });
+
+      }, layer);
+
+ 
+      anim_santa.start();
+
+      };
+      imageObj.src = 'img/santa.png';
+
+//NEVAR 
+
+var copo = new Array();
+      for (var i =0, pos_x=14; i < 100; i++) {
+        //pos_x=Math.round(Math.random()*500+0);
+        pos_x=Math.round(Math.random()*978+0);
+        pos_y=Math.round(Math.random()*(-500-10)-10);
+        copo[i] = new Kinetic.Circle({
+          x: pos_x,
+          y: pos_y,
+          radius: 2,
+          fill: 'white',
+          stroke: 'white',
+          strokeWidth: 1,
+
+          direccion: 1,
+          velocidad: Math.random(),
+        });
+      
+        layer.add(copo[i]);
+      };
+      stage.add(layer);
+
+      var amplitude = 1;
+      var period = 500;
+      var nevar = new Kinetic.Animation(function(frame) {
+        for (x=0;x<100;x++) {
+
+          copo[x].attrs.x += (copo[x].attrs.velocidad*0.02)*copo[x].attrs.direccion;
+          if(Math.random()*10>9){
+             copo[x].attrs.direccion=copo[x].attrs.direccion*-1;
+          }
+          copo[x].setY(copo[x].attrs.y + 1); 
+          if (copo[x].attrs.y >= 500) {
+           copo[x].setY(Math.round(Math.random()*(-500-10)+0));
+          }
+        }
+      }, layer);
+
+      nevar.start();
+
+//FIN NEVAR
+
+
+//MAR
+
+var mar = new Image();
+      mar.onload = function() {
+        var maragua = new Kinetic.Image({
+          x: -20,
+          y: 500,
+          image: mar,
+          width: 1300,
+          height: 210
+        });
+
+        // add the shape to the layer
+        layer.add(maragua);
+var animmar = new Kinetic.Animation(function(frame) {
+        maragua.setX(50 * Math.sin(frame.time * 2 * Math.PI / 8000) -100);
+        
+      }, layer);
+
+      animmar.start();
+      };
+      mar.src = 'img/agua.png';
+
+
+
+
+
+
+
+
+
+        function musica2(){ // Cuando ganas salta esta funcion
+    document.getElementById('sound2').play();
+  }
+   function musica(){ // Cuando ganas salta esta funcion
+    document.getElementById('sound1').play();
+  }
+  function pausajack(){
+    document.getElementById('sound2').pause();
+sound2.currentTime = 0;
+
+  }
+
+
+
+
+
+
+
+      
+    </script>
+    <audio id="sound2" src="olaman2.mp3" preload="auto"></audio>
+<audio id="sound1" src="nanana.mp3" preload="auto"></audio>
+
+  </body>
+</html>
