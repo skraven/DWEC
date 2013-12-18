@@ -3,9 +3,17 @@
 <html>
   <head>
     <style>
+
+    @font-face
+{
+    font-family:fuenteNavidad;
+    src:url(bonnet.ttf)
+}
+
       body {
         margin: 0px;
         padding: 0px;
+        font:bold 30px fuenteNavidad, Verdana, sans-serif;
       }
       #container{
         border: 12px solid black;
@@ -33,7 +41,6 @@
         height: 600
       });
       var layer = new Kinetic.Layer();
-
 
 
 
@@ -80,37 +87,19 @@ var arbolito = new Image();
         };
       arbolito.src = 'img/arbol2.png';
 
-var jack = new Image();
-      jack.onload = function() {
-        var jackim = new Kinetic.Image({
-          x: 200,
-          y: 280,
-          image: jack,
-          width: 132,
-          height: 210
-        });
-
-        // add the shape to the layer
-        layer.add(jackim);
 
 
-     var animjack = new Kinetic.Animation(function(frame) { 
-     
-        jackim.on('mouseover', function() {
-          musica2();
-        });
-        jackim.on('mouseout', function() {
-          pausajack();
-        });
+var Textochrist = new Kinetic.Text({
+        x: 350,
+        y: 170,
+        text: 'Bon Nadal',
+        fontSize: 50,
+        fontFamily: 'fuenteNavidad',
+        fill: '#49b143',
+        stroke: 'white'
+      });
+layer.add(Textochrist);
 
-
-      }, layer);
-
- 
-      animjack.start();
-
-      };
-      jack.src = 'img/jack.png';
 
 
 var imageObj = new Image();
@@ -150,10 +139,61 @@ var imageObj = new Image();
       };
       imageObj.src = 'img/santa.png';
 
+
+//TEXTO//
+var bonadaltext = new Image();
+      bonadaltext.onload = function() {
+        var textonavidad = new Kinetic.Image({
+          x: 280,
+          y: 150,
+          image: bonadaltext,
+          width: 450,
+          height: 169
+        });
+
+        layer.add(textonavidad);
+        };
+      bonadaltext.src = 'img/nadal_text.png';
+
+
+//JACK//
+var jack = new Image();
+      jack.onload = function() {
+        var jackim = new Kinetic.Image({
+          x: 10,
+          y: 300,
+          image: jack,
+          width: 120,
+          height: 169
+        });
+
+        // add the shape to the layer
+        layer.add(jackim);
+
+
+     var animjack = new Kinetic.Animation(function(frame) { 
+     
+        jackim.on('mouseover', function() {
+          musica2();
+        });
+        jackim.on('mouseout', function() {
+          pausajack();
+        });
+
+
+      }, layer);
+
+ 
+      animjack.start();
+
+      };
+      jack.src = 'img/jack.png';
+
+
 //NEVAR 
 
 var copo = new Array();
-      for (var i =0, pos_x=14; i < 100; i++) {
+      for (var i =0, pos_x=14; i < 150; i++) {
         //pos_x=Math.round(Math.random()*500+0);
         pos_x=Math.round(Math.random()*978+0);
         pos_y=Math.round(Math.random()*(-500-10)-10);
@@ -176,7 +216,7 @@ var copo = new Array();
       var amplitude = 1;
       var period = 500;
       var nevar = new Kinetic.Animation(function(frame) {
-        for (x=0;x<100;x++) {
+        for (x=0;x<150;x++) {
 
           copo[x].attrs.x += (copo[x].attrs.velocidad*0.02)*copo[x].attrs.direccion;
           if(Math.random()*10>9){
@@ -217,6 +257,201 @@ var animmar = new Kinetic.Animation(function(frame) {
       };
       mar.src = 'img/agua.png';
 
+//DUENDECILLO
+
+var duendebody = new Image();
+      duendebody.onload = function() {
+        var cuerpoduende = new Kinetic.Image({
+          x: 550,
+          y: 400,
+          image: duendebody,
+          width: 100,
+          height: 82
+        });
+
+        layer.add(cuerpoduende);
+        };
+      duendebody.src = 'img/duendebody.png';
+
+
+
+var duendehead = new Image();
+      duendehead.onload = function() {
+        var cabesaduende = new Kinetic.Image({
+          x: 550,
+          y: 330,
+          image: duendehead,
+          width: 100,
+          height: 107
+        });
+
+        layer.add(cabesaduende);
+
+var angleDiff;
+        var angle = 0;
+        var iz = false;
+        var angularSpeed = Math.PI / 4;
+        var animacion_duende = new Kinetic.Animation(function(frame) {
+            if(!iz && angle <0.1){
+              angleDiff = -(frame.timeDiff * angularSpeed / 1000);
+            }
+            else if(iz && angle >-0.1){
+              angleDiff = frame.timeDiff * angularSpeed / 1000;
+            }
+            cabesaduende.rotate(angleDiff);
+            angle-=angleDiff;
+            if(angle>=0.1){
+              iz=!iz;
+            }
+            else if(angle<=-0.1){
+              iz=!iz;
+            }
+
+cabesaduende.on('mouseover', function() {
+          musica_duende();
+        });
+        cabesaduende.on('mouseout', function() {
+          pausaduende();
+        });
+
+        }, layer)
+
+
+
+        animacion_duende.start();
+
+        };
+      duendehead.src = 'img/duendehead.png';
+
+
+//Reno
+var renobody = new Image();
+      renobody.onload = function() {
+        var cuerporeno = new Kinetic.Image({
+          x: 650,
+          y: 400,
+          image: renobody,
+          width: 100,
+          height: 82
+        });
+
+        layer.add(cuerporeno);
+        };
+      renobody.src = 'img/renobody.png';
+
+
+
+var renohead = new Image();
+      renohead.onload = function() {
+        var cabesareno = new Kinetic.Image({
+          x: 644,
+          y: 322,
+          image: renohead,
+          width: 100,
+          height: 107
+        });
+
+        layer.add(cabesareno);
+        var angleDiff;
+        var angle = 0;
+        var iz = false;
+        var angularSpeed = Math.PI / 4;
+        var animacion = new Kinetic.Animation(function(frame) {
+            if(!iz && angle <0.05){
+              angleDiff = -(frame.timeDiff * angularSpeed / 3000);
+            }
+            else if(iz && angle >-0.05){
+              angleDiff = frame.timeDiff * angularSpeed / 3000;
+            }
+            cabesareno.rotate(angleDiff);
+            angle-=angleDiff;
+            if(angle>=0.05){
+              iz=!iz;
+            }
+            else if(angle<=-0.05){
+              iz=!iz;
+            }
+        }, layer)
+        animacion.start();
+
+        };
+      renohead.src = 'img/renohead.png';
+
+//SNOWMAN
+var snowbody = new Image();
+      snowbody.onload = function() {
+        var cuerposnow = new Kinetic.Image({
+          x: 870,
+          y: 430,
+          image: snowbody,
+          width: 100,
+          height: 62
+        });
+
+        layer.add(cuerposnow);
+        };
+      snowbody.src = 'img/snowbody.png';
+
+
+
+var snowhead = new Image();
+      snowhead.onload = function() {
+        var cabesasnow = new Kinetic.Image({
+          x: 860,
+          y: 345,
+          image: snowhead,
+          width: 92,
+          height: 102
+        });
+
+        layer.add(cabesasnow);
+        var angleDiff;
+        var angle = 0;
+        var iz = false;
+        var angularSpeed = Math.PI / 4;
+        var animacion = new Kinetic.Animation(function(frame) {
+            if(!iz && angle <0.1){
+              angleDiff = -(frame.timeDiff * angularSpeed / 6000);
+            }
+            else if(iz && angle >-0.1){
+              angleDiff = frame.timeDiff * angularSpeed / 3000;
+            }
+            cabesasnow.rotate(angleDiff);
+            angle-=angleDiff;
+            if(angle>=0.1){
+              iz=!iz;
+            }
+            else if(angle<=-0.1){
+              iz=!iz;
+            }
+        }, layer)
+        animacion.start();
+
+        };
+      snowhead.src = 'img/snowhead.png';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -234,6 +469,13 @@ var animmar = new Kinetic.Animation(function(frame) {
   function pausajack(){
     document.getElementById('sound2').pause();
 sound2.currentTime = 0;
+  }
+   function musica_duende(){ // Cuando ganas salta esta funcion
+    document.getElementById('sound3').play();
+  }
+  function pausaduende(){
+    document.getElementById('sound3').pause();
+sound3.currentTime = 0;
 
   }
 
@@ -247,6 +489,7 @@ sound2.currentTime = 0;
     </script>
     <audio id="sound2" src="olaman2.mp3" preload="auto"></audio>
 <audio id="sound1" src="nanana.mp3" preload="auto"></audio>
+<audio id="sound3" src="duende.mp3" preload="auto"></audio>
 
   </body>
 </html>
