@@ -44,6 +44,49 @@
 
 
 
+//NEVAR 
+
+var copo = new Array();
+      for (var i =0, pos_x=14; i < 150; i++) {
+        //pos_x=Math.round(Math.random()*500+0);
+        pos_x=Math.round(Math.random()*978+0);
+        pos_y=Math.round(Math.random()*(-500-10)-10);
+        copo[i] = new Kinetic.Circle({
+          x: pos_x,
+          y: pos_y,
+          radius: 2,
+          fill: 'white',
+          stroke: 'white',
+          strokeWidth: 1,
+          opacity:0.8,
+
+          direccion: 1,
+          velocidad: Math.random(),
+        });
+      
+        layer.add(copo[i]);
+      };
+      stage.add(layer);
+
+      var amplitude = 1;
+      var period = 500;
+      var nevar = new Kinetic.Animation(function(frame) {
+        for (x=0;x<150;x++) {
+
+          copo[x].attrs.x += (copo[x].attrs.velocidad*0.02)*copo[x].attrs.direccion;
+          if(Math.random()*10>9){
+             copo[x].attrs.direccion=copo[x].attrs.direccion*-1;
+          }
+          copo[x].setY(copo[x].attrs.y + 1); 
+          if (copo[x].attrs.y >= 500) {
+           copo[x].setY(Math.round(Math.random()*(-500-10)+0));
+          }
+        }
+      }, layer);
+
+      nevar.start();
+
+//FIN NEVAR
 
 var star = new Kinetic.Star({
         x: 830,
@@ -89,19 +132,6 @@ var arbolito = new Image();
 
 
 
-var Textochrist = new Kinetic.Text({
-        x: 350,
-        y: 170,
-        text: 'Bon Nadal',
-        fontSize: 50,
-        fontFamily: 'fuenteNavidad',
-        fill: '#49b143',
-        stroke: 'white'
-      });
-layer.add(Textochrist);
-
-
-
 var imageObj = new Image();
       imageObj.onload = function() {
         var santa = new Kinetic.Image({
@@ -144,11 +174,11 @@ var imageObj = new Image();
 var bonadaltext = new Image();
       bonadaltext.onload = function() {
         var textonavidad = new Kinetic.Image({
-          x: 280,
-          y: 150,
+          x: 270,
+          y: 120,
           image: bonadaltext,
           width: 450,
-          height: 169
+          height: 199
         });
 
         layer.add(textonavidad);
@@ -190,48 +220,7 @@ var jack = new Image();
       jack.src = 'img/jack.png';
 
 
-//NEVAR 
 
-var copo = new Array();
-      for (var i =0, pos_x=14; i < 150; i++) {
-        //pos_x=Math.round(Math.random()*500+0);
-        pos_x=Math.round(Math.random()*978+0);
-        pos_y=Math.round(Math.random()*(-500-10)-10);
-        copo[i] = new Kinetic.Circle({
-          x: pos_x,
-          y: pos_y,
-          radius: 2,
-          fill: 'white',
-          stroke: 'white',
-          strokeWidth: 1,
-
-          direccion: 1,
-          velocidad: Math.random(),
-        });
-      
-        layer.add(copo[i]);
-      };
-      stage.add(layer);
-
-      var amplitude = 1;
-      var period = 500;
-      var nevar = new Kinetic.Animation(function(frame) {
-        for (x=0;x<150;x++) {
-
-          copo[x].attrs.x += (copo[x].attrs.velocidad*0.02)*copo[x].attrs.direccion;
-          if(Math.random()*10>9){
-             copo[x].attrs.direccion=copo[x].attrs.direccion*-1;
-          }
-          copo[x].setY(copo[x].attrs.y + 1); 
-          if (copo[x].attrs.y >= 500) {
-           copo[x].setY(Math.round(Math.random()*(-500-10)+0));
-          }
-        }
-      }, layer);
-
-      nevar.start();
-
-//FIN NEVAR
 
 
 //MAR
