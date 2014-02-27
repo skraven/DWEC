@@ -1,0 +1,57 @@
+body{
+	background-color: white;
+}
+
+.divTablero{
+	display: table;
+	width: auto;
+	margin: 0 auto;
+}
+
+.divFila{
+	background-color:#eee;
+	display:table-row;
+	width: auto;
+	margin: 0 auto;
+	}
+
+.divCasilla{
+    float:left;
+    display:table-column;
+    width: 61px;
+    height: 61px;
+    border: 1px solid  #000;
+}
+.ficha1{
+	height: 60px;
+	width:60px;
+	background-image: url('../img/ficha1.png');
+	background-repeat: no-repeat;
+}
+.ficha2{
+	height: 60px;
+	width:61px;
+	background-image: url('../img/ficha2.png');
+	background-repeat: no-repeat;
+}
+.ficha3{
+	height: 60px;
+	width:60px;
+	background-image: url('../img/ficha3.png');
+	background-repeat: no-repeat;
+}
+.ficha4{
+	height: 60px;
+	width:60px;
+	background-image: url('../img/ficha4.png');
+	background-repeat: no-repeat;
+}
+.hover
+{
+	background-color: red;
+}
+
+.active
+{
+	background-color: green;
+}
